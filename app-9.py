@@ -384,7 +384,7 @@ def train_model(df: pd.DataFrame):
 
     model = RandomForestClassifier(n_estimators=300, class_weight="balanced", random_state=42)
     model.fit(X, y)
-
+    
     return model, le_div, le_date
 
 
