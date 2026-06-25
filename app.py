@@ -13,6 +13,7 @@
 import os
 import re
 import difflib
+import joblib
 
 import numpy as np
 import pandas as pd
@@ -549,6 +550,10 @@ def risk_category(risk_score: float):
 df = load_data()
 model, le_div, le_date = train_model(df)
 
+model = joblib.load("towing_model.pkl")
+le_div = joblib.load("label_encoder_div.pkl")
+le_date = joblib.load("label_encoder_date.pkl")
+
 DIVISIONS = sorted(df["Division Name"].unique().tolist())
 DATE_TYPES = ["Both", "Odd", "Even"]
 VEHICLE_TYPES = ["Car / Sedan", "Two-Wheeler", "Auto-Rickshaw", "SUV / MUV", "Bus", "Truck / Heavy Vehicle", "Other"]
@@ -841,11 +846,21 @@ elif page == "🏢 Yard Finder":
     st.markdown('<div class="panel">', unsafe_allow_html=True)
     yf1, yf2 = st.columns(2)
     with yf1:
-        road_name_yf = st.text_input(
-            "Road Name or Area",
-            key="yf_road_text",
-            placeholder="e.g. FC Road, or an area like Kothrud",
+        road_options_yf = ["✏️ Type a custom road / location"] + sorted(df["Road Name"].unique().tolist())
+        road_choice_yf = st.selectbox(
+            "Road Name",
+            road_options_yf,
+            format_func=lambda x: x if len(x) <= 70 else x[:67] + "...",
+            key="yf_road_choice",
         )
+        if road_choice_yf == "✏️ Type a custom road / location":
+            road_name_yf = st.text_input(
+                "Enter road / location name",
+                placeholder="e.g. FC Road near Goodluck Chowk",
+                key="yf_road_input",
+            )
+        else:
+            road_name_yf = road_choice_yf
     with yf2:
         division_input_yf = st.selectbox(
             "Area / Division (used only if no match is found above)",
