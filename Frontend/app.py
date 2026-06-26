@@ -32,8 +32,8 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
-
-DATA_PATH = os.path.join("../Backend/Pune_With_Real_Features_v5.csv")
+BASE_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_PATH = os.path.join(BASE_DIR,"Backend","Pune_With_Real_Features_v5.csv")
 
 # ----------------------------------------------------------------------------
 # CUSTOM CSS  —  "Night Patrol" theme: deep navy command-console base with
@@ -550,9 +550,9 @@ def risk_category(risk_score: float):
 df = load_data()
 # model, le_div, le_date = train_model(df)
 
-model = joblib.load("../Backend/towing_model.pkl")
-le_div = joblib.load("../Backend/label_encoder_div.pkl")
-le_date = joblib.load("../Backend/label_encoder_date.pkl")
+model = joblib.load(os.path.join(BASE_DIR, "Backend", "towing_model.pkl"))
+le_div = joblib.load(os.path.join(BASE_DIR, "Backend", "label_encoder_div.pkl"))
+le_date = joblib.load(os.path.join(BASE_DIR, "Backend", "label_encoder_date.pkl"))
 
 DIVISIONS = sorted(df["Division Name"].unique().tolist())
 DATE_TYPES = ["Both", "Odd", "Even"]
