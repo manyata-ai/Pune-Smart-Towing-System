@@ -127,23 +127,23 @@ section[data-testid="stSidebar"] .kpi-label {
 .stNumberInput input,
 .stSelectbox div[data-baseweb="select"] > div,
 .stMultiSelect div[data-baseweb="select"] > div {
-    background-color: #FFFFFF !important;
-    color: #0A0E1A !important;
-    border: 1px solid var(--border) !important;
+    background-color: #1A2438 !important;
+    color: #E8ECF4 !important;
+    border: 1px solid rgba(255,159,67,0.35) !important;
     font-weight: 500;
 }
 .stTextInput input::placeholder {
-    color: #6B7280 !important;
+    color: #8B96AC !important;
     opacity: 1 !important;
 }
 /* Dropdown menu options list */
 div[data-baseweb="popover"] li,
 div[data-baseweb="menu"] li {
-    color: #0A0E1A !important;
+    color: #E8ECF4 !important;
 }
 div[data-baseweb="popover"] ul,
 div[data-baseweb="menu"] ul {
-    background-color: #FFFFFF !important;
+    background-color: #1A2438 !important;
 }
 /* Selected value text + label above the field */
 .stSelectbox label, .stTextInput label, .stNumberInput label, .stMultiSelect label {
@@ -795,6 +795,10 @@ elif page == "🚓 Risk Predictor":
                 m1, m2 = st.columns(2)
                 m1.metric("Risk Score", f"{result['risk_score']:.1f}%")
                 m2.metric("Confidence Score", f"{result['confidence']:.1f}%")
+                st.link_button(
+    "🗺️ Find Yard on Maps",
+    f"https://www.google.com/maps/search/{result['yard_name']}+Pune"
+)
 
             with rc2:
                 gauge = go.Figure(
@@ -918,6 +922,10 @@ elif page == "🏢 Yard Finder":
                     st.markdown("**Yard activity snapshot**")
                     st.metric("Records linked to this yard", len(yard_records))
                     st.metric("Towed rate at this yard", f"{yard_records['Towed'].mean()*100:.1f}%")
+                    st.link_button(
+    "🗺️ Navigate to Yard",
+    f"https://www.google.com/maps/search/{yard_name}+Pune+Traffic+Yard"
+)
                 else:
                     st.info("No historical records found for this yard yet.")
 
