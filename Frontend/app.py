@@ -296,6 +296,33 @@ div[data-baseweb="menu"] ul {
 [data-testid="stMetricLabel"] { color: var(--muted) !important; }
 
 hr { border-color: var(--border); }
+/* Force dark selectbox */
+.stSelectbox [data-baseweb="select"] > div {
+    background: #1A2438 !important;
+    color: #E8ECF4 !important;
+    border: 1px solid rgba(255,159,67,0.35) !important;
+}
+
+.stSelectbox [data-baseweb="select"] span {
+    color: #E8ECF4 !important;
+}
+
+.stSelectbox [data-baseweb="select"] svg {
+    fill: #E8ECF4 !important;
+}
+
+div[data-baseweb="popover"] {
+    background: #1A2438 !important;
+}
+
+div[data-baseweb="menu"] {
+    background: #1A2438 !important;
+}
+
+div[role="option"] {
+    background: #1A2438 !important;
+    color: #E8ECF4 !important;
+}
 </style>
 """
 
