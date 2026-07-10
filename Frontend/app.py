@@ -567,7 +567,7 @@ def risk_category(risk_score: float):
 # LOAD DATA + MODEL ONCE
 # ----------------------------------------------------------------------------
 df = load_data()
-# model, le_div, le_date = train_model(df)
+model, le_div, le_date = train_model(df)
 
 model = joblib.load(os.path.join(BASE_DIR, "Backend", "towing_model.pkl"))
 le_div = joblib.load(os.path.join(BASE_DIR, "Backend", "label_encoder_div.pkl"))
