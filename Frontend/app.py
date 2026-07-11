@@ -315,6 +315,15 @@ div[data-baseweb="select"] span {
 div[data-baseweb="select"] svg {
     fill: #E8ECF4 !important;
 }
+div[data-baseweb="select"] > div > div {
+    background-color: #1A2438 !important;
+}
+div[data-baseweb="base-input"] {
+    background-color: #1A2438 !important;
+}
+[data-baseweb="select"] [data-testid="stMarkdownContainer"] {
+    color: #E8ECF4 !important;
+}
 </style>
 """
 
