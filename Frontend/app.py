@@ -324,6 +324,15 @@ div[data-baseweb="base-input"] {
 [data-baseweb="select"] [data-testid="stMarkdownContainer"] {
     color: #E8ECF4 !important;
 }
+input[role="combobox"] {
+    background-color: #1A2438 !important;
+    color: #E8ECF4 !important;
+}
+
+input[role="combobox"]::placeholder {
+    color: #8B96AC !important;
+    opacity: 1 !important;
+}
 </style>
 """
 
